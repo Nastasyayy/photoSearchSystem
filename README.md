@@ -36,4 +36,10 @@ The system processes race participant data, GPS tracks (`.gpx` files), and photo
 * `napipod.cpp / napipod.h / main.cpp` — Node.js native addon integration
 * `binding.gyp` — N-API build configuration
 
+## Documentation
+
+- [Project presentation](docs/Photo_Search_System_Architecture_and_Algorithm.pptx)
+
+The presentation provides an overview of the system architecture, algorithm approach, and implementation details.
+
 The project demonstrates integration between a web API service and a high-performance native C++ module for computational tasks.
