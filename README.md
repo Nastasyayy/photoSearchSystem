@@ -1,8 +1,39 @@
-# Система поиска фотографий участников любительских легкоатлетических пробегов
-Данный проект представляет собой микросервис с доступом по API. Сервер проекта реализован на JavaScript в программной среде Node.js с помощью фреймворка Express и ряда других модулей (реализация - myserver.js).
-В рамках проекта создан алгоритм определения вероятности нахождения на фото участника пробега на основе метаданных фотографий события и файла трека участника (track.gpx). Решение представлено в виде модуля test, подключаемого в NodeJS. Используется при обработке запросов на сервер, описание возможностей API представлено в документации.
+# Photo Search System for Running Events
 
-Модуль test реализован на C++. Описание алгоритма определения вероятности представлено в файле "Презентация.pptx", (реализация - папка algorithm, файлы pod.h, pod.cpp). Данный модуль был интегрирован в сервер с помощью N-API - специального средства для создания собственных расширений для Node.js (реализация - папка algorithm, файлы napipod.h, napipod.cpp, main.cpp, binding.gyp).
+A microservice-based API application designed to help participants of amateur running events find their photos automatically.
 
-Каждое фото, указанного в запросе /search пробега, проходит проверку на определение вероятности нахождения на данном фото участника пробега, для которого осуществляется поиск, используя модуль test. В качестве ответа на запрос получаем массив со значениями вероятности и расположениями файлов на внешней системе, где хранятся фотографии.
+The system processes race participant data, GPS tracks (`.gpx` files), and photo metadata to calculate the probability that a specific participant appears in a given photo. The service provides an API endpoint for searching and returns a ranked list of photos with corresponding confidence scores and file locations.
 
+## Architecture
+
+* **Backend:** Node.js + Express
+* **API:** REST API for photo search requests
+* **Algorithm module:** C++ implementation integrated with Node.js using N-API
+* **Data processing:** Photo metadata analysis and participant GPS track matching
+
+## How it works
+
+1. A user sends a search request with participant information and race data.
+2. The server processes available event photos and participant track data.
+3. The C++ algorithm module calculates the probability of a participant appearing in each photo.
+4. The API returns matching photos with confidence scores.
+
+## Technologies
+
+* JavaScript / Node.js
+* Express.js
+* C++
+* Node.js N-API
+* REST API
+* GPS track processing (GPX)
+* Microservice architecture
+
+## Project Structure
+
+* `myserver.js` — Node.js server implementation
+* `algorithm/` — C++ algorithm module
+* `pod.cpp / pod.h` — probability calculation logic
+* `napipod.cpp / napipod.h / main.cpp` — Node.js native addon integration
+* `binding.gyp` — N-API build configuration
+
+The project demonstrates integration between a web API service and a high-performance native C++ module for computational tasks.
