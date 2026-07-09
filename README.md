@@ -38,7 +38,7 @@ The system processes race participant data, GPS tracks (`.gpx` files), and photo
 
 ## Documentation
 
-- [Project presentation](Photo_Search_System_Architecture_and_Algorithm.pptx)
+- [Project presentation](photo_search_system_overview.pptx)
 
 The presentation provides an overview of the system architecture, algorithm approach, and implementation details.
 
